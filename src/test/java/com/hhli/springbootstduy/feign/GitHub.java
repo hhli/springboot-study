@@ -1,5 +1,6 @@
 package com.hhli.springbootstduy.feign;
 
+import com.hhli.springbootstduy.model.vo.Contributor;
 import feign.Param;
 import feign.RequestLine;
 

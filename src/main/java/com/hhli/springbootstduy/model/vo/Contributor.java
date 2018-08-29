@@ -1,4 +1,4 @@
-package com.hhli.springbootstduy.feign;
+package com.hhli.springbootstduy.model.vo;
 
 import lombok.Data;
 

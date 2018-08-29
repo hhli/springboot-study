@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration  scan="true" scanPeriod="60 seconds" debug="false">
+    <contextName>logback</contextName>
+    <!--pattern带颜色输出-->
+    <property name="log.pattern" value="%yellow(%d{yyyy/MM/dd-HH:mm:ss:SSS}) %red(%X{sessionTokenId}) %magenta([%thread]) %green(%-5level) %cyan(%logger)- %highlight(%msg%n)"/>
+    <!--输出到控制台-->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <!--输出到文件-->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/convention.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/test.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!--只保留30天-->
+            <maxHistory>30</maxHistory>
+            <maxFileSize>100MB</maxFileSize>
+            <totalSizeCap>5GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="errorFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/test.error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/test.error.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!--只保留30天-->
+            <maxHistory>30</maxHistory>
+            <maxFileSize>100MB</maxFileSize>
+            <totalSizeCap>5GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log.pattern}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="console" />
+        <appender-ref ref="file" />
+        <appender-ref ref="errorFile"/>
+    </root>
+
+    <!--类的全路径additivity=false 不再交由上级root打印，只自己打印即可 -->
+    <logger name="com.hhli.springbootstduy.test" level="INFO" additivity="false">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file" />
+        <appender-ref ref="errorFile"/>
+    </logger>
+    <logger name="com.hhli.springbootstduy.service" level="INFO" additivity="false">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file" />
+        <appender-ref ref="errorFile"/>
+    </logger>
+    <logger name="com.hhli.springbootstduy.manager" level="INFO" additivity="false">
+        <appender-ref ref="console"/>
+        <appender-ref ref="file" />
+        <appender-ref ref="errorFile"/>
+    </logger>
+
+    <!--开发环境-->
+    <springProfile name="dev">
+        <logger name="com.hhli.springbootstduy.web" level="DEBUG" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file" />
+            <appender-ref ref="errorFile"/>
+        </logger>
+        <logger name="com.hhli.springbootstduy.dao" level="DEBUG" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file" />
+            <appender-ref ref="errorFile"/>
+        </logger>
+    </springProfile>
+
+    <!--开发环境-->
+    <springProfile name="myself">
+        <logger name="com.hhli.springbootstduy.web" level="DEBUG" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file" />
+            <appender-ref ref="errorFile"/>
+        </logger>
+        <logger name="com.hhli.springbootstduy.dao" level="DEBUG" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file" />
+            <appender-ref ref="errorFile"/>
+        </logger>
+    </springProfile>
+
+    <!--测试环境-->
+    <springProfile name="test">
+        <logger name="com.hhli.springbootstduy.web" level="DEBUG" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file" />
+            <appender-ref ref="errorFile"/>
+        </logger>
+        <logger name="com.hhli.springbootstduy.dao" level="DEBUG" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file" />
+            <appender-ref ref="errorFile"/>
+        </logger>
+    </springProfile>
+
+    <!--生产环境-->
+    <springProfile name="prod">
+        <logger name="com.hhli.springbootstduy.web" level="INFO" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file" />
+            <appender-ref ref="errorFile"/>
+        </logger>
+        <logger name="com.hhli.springbootstduy.dao" level="INFO" additivity="false">
+            <appender-ref ref="console"/>
+            <appender-ref ref="file" />
+            <appender-ref ref="errorFile"/>
+        </logger>
+    </springProfile>
+</configuration>

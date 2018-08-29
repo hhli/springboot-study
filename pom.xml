@@ -14,8 +14,10 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<!-- spring boot的神坑https://github.com/spring-cloud/spring-cloud-config/issues/836-->
+		<!--不明白为啥引入spring-cloud-starter-feign后必须降低spring-boot-stater等的版本-->
+		<version>1.5.4.RELEASE</version>
+		<relativePath/>
 	</parent>
 
 	<properties>
@@ -24,12 +26,31 @@
 		<java.version>1.8</java.version>
 		<feign.version>10.0.1</feign.version>
 		<lombok.version>1.16.18</lombok.version>
+		<feign.starter.version>1.4.5.RELEASE</feign.starter.version>
 	</properties>
 
 	<dependencies>
+		<!--在pom文件中排除tomcat的starter-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<!--增加Jetty依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jetty</artifactId>
 		</dependency>
 
 		<dependency>
@@ -56,6 +77,14 @@
 			<artifactId>lombok</artifactId>
 			<version>${lombok.version}</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-feign -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-feign</artifactId>
+			<version>${feign.starter.version}</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
