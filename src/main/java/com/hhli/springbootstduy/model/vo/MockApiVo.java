@@ -2,7 +2,7 @@ package com.hhli.springbootstduy.model.vo;
 
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * Created by hhli_yangyu on 2018/9/16.
@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class MockApiVo {
     private Long id;
 
-    private LocalDate createdAt;
+    private Date createdAt;
 
     private String name;
 

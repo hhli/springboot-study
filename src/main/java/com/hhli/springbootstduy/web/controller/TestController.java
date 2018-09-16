@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * Created by hhli_yangyu on 2018/9/16.
@@ -42,7 +43,7 @@ public class TestController extends BaseController {
 
         MockApiVo vo = new MockApiVo();
         vo.setId(1L);
-        vo.setCreatedAt(LocalDate.now());
+        vo.setCreatedAt(new Date());
         vo.setName("白熊");
         vo.setAvatar("我是白熊，虽然我很沉默，但是我很温柔，并且无所不能~~");
 

@@ -1,7 +1,6 @@
 package com.hhli.springbootstduy.model.pojo;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
