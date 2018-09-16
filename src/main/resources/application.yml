@@ -1,3 +1,9 @@
 project:
    version: 0.0.1
    description: springboot学习研究所
+
+spring:
+   http:
+      multipart:
+        max-request-size: 50MB
+        max-file-size: 50MB

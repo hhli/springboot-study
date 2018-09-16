@@ -5,11 +5,9 @@ import com.hhli.springbootstduy.model.vo.MockApiVo;
 import com.hhli.springbootstduy.model.vo.ResultDataVo;
 import com.hhli.springbootstduy.web.BaseController;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -48,5 +46,12 @@ public class TestController extends BaseController {
         vo.setAvatar("我是白熊，虽然我很沉默，但是我很温柔，并且无所不能~~");
 
         return  vo;
+    }
+
+    @PostMapping(value = "/grizzly")
+    public ResultDataVo uploadFile(MultipartFile file){
+        log.info("file name is:{}", file.getOriginalFilename());
+
+        return  getSuccessResp(file.getOriginalFilename());
     }
 }

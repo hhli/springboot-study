@@ -1,5 +1,6 @@
 package com.hhli.springbootstduy.web.config;
 
+import feign.Contract;
 import feign.Logger;
 import feign.codec.Encoder;
 import feign.form.spring.SpringFormEncoder;
@@ -31,4 +32,13 @@ public class FeignConfig {
     public Logger.Level logger() {
         return Logger.Level.FULL;
     }
+
+//    /**
+//     * 开启feign-core的注解
+//     * @return
+//     */
+//    @Bean
+//    public Contract useFeignAnnotations() {
+//        return new Contract.Default();
+//    }
 }

@@ -6,8 +6,12 @@ import com.hhli.springbootstduy.rest.GitHubRest;
 import com.hhli.springbootstduy.rest.LocalApiRest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mock.web.MockMultipartFile;
 
-import javax.xml.transform.Source;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +23,8 @@ import java.util.Map;
  * TODO 增加对接口超时以及重试等配置
  * TODO LocalDate的序列化问题
  * TODO x-www-form-url-encode的入参问题
+ * TODO spring日志处理
+ * TODO 增加到maven项目模板中
  */
 public class FeignRestTest extends ApplicationBaseTest{
     @Autowired
@@ -50,6 +56,14 @@ public class FeignRestTest extends ApplicationBaseTest{
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("id", 2L);
         paramMap.put("name", "xiaohuihui");
-        System.out.println(apiRest.getUrlTest(paramMap));
+        System.out.println(apiRest.getBear(paramMap));
+    }
+
+
+    @Test
+    public void testUploadFile() throws IOException {
+        Map<String, Object> map = new HashMap<>();
+        map.put("file", new File("C:\\Users\\hhli_yangyu\\Desktop\\47.pptx"));
+        System.out.println(apiRest.getGrizzly(map));
     }
 }
