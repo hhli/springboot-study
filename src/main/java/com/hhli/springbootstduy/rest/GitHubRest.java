@@ -24,4 +24,5 @@ public interface GitHubRest {
      */
     @RequestMapping(value = "/repos/{owner}/{repo}/contributors", method = RequestMethod.GET)
     List<Contributor> contributors(@PathVariable("owner") String owner, @PathVariable("repo") String repo);
+
 }
