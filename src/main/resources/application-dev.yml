@@ -1,7 +1,10 @@
 server:
-  port: 8080
+  port: 30000
 
 
 
 github:
    server: https://api.github.com
+
+local:
+  server: http://localhost:30000/

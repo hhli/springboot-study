@@ -1,6 +1,7 @@
 package com.hhli.springbootstduy.web.controller;
 
 import com.hhli.springbootstduy.model.vo.ResultDataVo;
+import com.hhli.springbootstduy.web.BaseController;
 import com.hhli.springbootstduy.web.config.ProjectInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,6 @@ public class PingController extends BaseController {
      */
     @GetMapping(value={"/", "/it/ping"})
     public ResultDataVo testIt(){
-        return getResp(projectInfo);
+        return getSuccessResp(projectInfo);
     }
 }
