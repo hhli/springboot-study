@@ -14,9 +14,17 @@ public class ImportTest extends ApplicationBaseTest{
 
     @Autowired
     private CDPlayer cdPlayer;
+    @Autowired
+    private ClientBean clientBean;
 
     @Test
     public void testIt(){
         cdPlayer.play();
+    }
+
+
+    @Test
+    public void testImportBeanRegistrar(){
+        clientBean.doSomething();
     }
 }

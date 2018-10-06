@@ -1,6 +1,5 @@
 package com.hhli.springbootstduy.web.config;
 
-import feign.Contract;
 import feign.Logger;
 import feign.Retryer;
 import feign.codec.Encoder;

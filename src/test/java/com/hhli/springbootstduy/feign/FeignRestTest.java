@@ -6,11 +6,8 @@ import com.hhli.springbootstduy.rest.GitHubRest;
 import com.hhli.springbootstduy.rest.LocalApiRest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mock.web.MockMultipartFile;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +31,9 @@ public class FeignRestTest extends ApplicationBaseTest{
 
     @Test
     public void testGitHub(){
+        System.out.println("================");
         System.out.println(hubRest.contributors("OpenFeign", "feign"));
+        System.out.println("================");
     }
 
 
