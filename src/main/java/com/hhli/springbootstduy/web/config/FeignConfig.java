@@ -2,6 +2,7 @@ package com.hhli.springbootstduy.web.config;
 
 import feign.Contract;
 import feign.Logger;
+import feign.Retryer;
 import feign.codec.Encoder;
 import feign.form.spring.SpringFormEncoder;
 import org.springframework.beans.factory.ObjectFactory;
@@ -10,6 +11,8 @@ import org.springframework.boot.autoconfigure.web.HttpMessageConverters;
 import org.springframework.cloud.netflix.feign.support.SpringEncoder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * Created by hhli_yangyu on 2018/9/16.
@@ -33,12 +36,8 @@ public class FeignConfig {
         return Logger.Level.FULL;
     }
 
-//    /**
-//     * 开启feign-core的注解
-//     * @return
-//     */
-//    @Bean
-//    public Contract useFeignAnnotations() {
-//        return new Contract.Default();
-//    }
+    @Bean
+    public Retryer feignRetryer() {
+        return new Retryer.Default(100, SECONDS.toMillis(1), 5);
+    }
 }
