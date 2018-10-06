@@ -28,9 +28,16 @@
 		<form.version>3.2.2</form.version>
 		<lombok.version>1.16.18</lombok.version>
 		<feign.starter.version>1.4.5.RELEASE</feign.starter.version>
+		<cglib.version>3.2.8</cglib.version>
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>${cglib.version}</version>
+		</dependency>
+
 		<!--在pom文件中排除tomcat的starter-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -111,6 +118,7 @@
 			<groupId>com.fasterxml.jackson.datatype</groupId>
 			<artifactId>jackson-datatype-jsr310</artifactId>
 		</dependency>
+
 	</dependencies>
 
 	<build>
