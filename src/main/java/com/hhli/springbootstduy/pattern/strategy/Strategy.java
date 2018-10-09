@@ -6,5 +6,10 @@ package com.hhli.springbootstduy.pattern.strategy;
  * @summary
  */
 public abstract class Strategy {
+    /**
+     *  计算折扣
+     * @param basePrice
+     * @return
+     */
     public abstract double getDiscount(double basePrice);
 }
