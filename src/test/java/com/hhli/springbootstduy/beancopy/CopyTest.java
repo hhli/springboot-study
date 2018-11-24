@@ -1,4 +1,4 @@
-package beancopy;
+package com.hhli.springbootstduy.beancopy;
 
 import org.apache.commons.lang.SerializationUtils;
 

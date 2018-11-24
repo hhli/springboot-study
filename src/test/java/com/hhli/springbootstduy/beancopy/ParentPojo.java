@@ -1,4 +1,4 @@
-package beancopy;
+package com.hhli.springbootstduy.beancopy;
 
 /**
  * @author 李辉辉
