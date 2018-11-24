@@ -1,5 +1,7 @@
 package com.hhli.springbootstduy.proxy;
 
+import com.hhli.springbootstduy.jdk.B;
+
 /**
  * Created by hhli_yangyu on 2018/10/6.
  * @author hhli_yangyu
@@ -15,5 +17,7 @@ public class CglibTest {
         System.out.println("====================");
 
         h.toString();
+
+        B b = new B();
     }
 }
