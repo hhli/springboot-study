@@ -19,9 +19,31 @@ public class LockSupportTest {
         //System.out.println("block~~~");
         //t2();
 
-        Thread.currentThread().interrupt();
-        LockSupport.park();
-        System.out.println("main~~~~~~");
+        //Thread.currentThread().interrupt();
+        //LockSupport.park(null);
+        //System.out.println(Thread.currentThread().isInterrupted());
+        //System.out.println("main~~~~~~");
+
+        //int i = Integer.MAX_VALUE  + 1;
+        //System.out.println(i);
+
+        Thread thread = new Thread(() -> {
+            for (int i=0; i<10000; i++){
+                System.out.println("i="+i);
+            }
+            LockSupport.park();
+            System.out.println("end=======");
+        });
+        thread.start();
+
+        System.out.println("main============");
+        LockSupport.unpark(thread);
+        System.out.println("main end=========");
+
+        //LockSupport.park();
+        //LockSupport.unpark(Thread.currentThread());
+        //System.out.println(Thread.currentThread().isInterrupted());
+        //System.out.println("main============");
     }
 
     public static void t2() throws Exception {
@@ -48,7 +70,6 @@ public class LockSupportTest {
 
             }
         });
-
         t.start();
         Thread.sleep(2000);
 
