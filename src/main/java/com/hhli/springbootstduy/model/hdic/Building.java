@@ -8,7 +8,7 @@ import lombok.Data;
  * @description 楼栋
  */
 @Data
-public class Building {
+public class Building extends BasePojo{
     /**
      * 主键id
      */

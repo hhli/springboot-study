@@ -27,23 +27,25 @@ public class LockSupportTest {
         //int i = Integer.MAX_VALUE  + 1;
         //System.out.println(i);
 
-        Thread thread = new Thread(() -> {
-            for (int i=0; i<10000; i++){
-                System.out.println("i="+i);
-            }
-            LockSupport.park();
-            System.out.println("end=======");
-        });
-        thread.start();
-
-        System.out.println("main============");
-        LockSupport.unpark(thread);
-        System.out.println("main end=========");
+        //Thread thread = new Thread(() -> {
+        //    for (int i=0; i<10000; i++){
+        //        System.out.println("i="+i);
+        //    }
+        //    LockSupport.park();
+        //    System.out.println("end=======");
+        //});
+        //thread.start();
+        //
+        //System.out.println("main============");
+        //LockSupport.unpark(thread);
+        //System.out.println("main end=========");
 
         //LockSupport.park();
         //LockSupport.unpark(Thread.currentThread());
         //System.out.println(Thread.currentThread().isInterrupted());
         //System.out.println("main============");
+
+        t2();
     }
 
     public static void t2() throws Exception {

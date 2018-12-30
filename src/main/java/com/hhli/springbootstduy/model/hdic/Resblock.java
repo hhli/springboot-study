@@ -10,7 +10,7 @@ import java.util.List;
  * @description 楼盘
  */
 @Data
-public class Resblock {
+public class Resblock extends BasePojo{
 
     /**
      * 主键id
