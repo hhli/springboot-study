@@ -13,21 +13,22 @@ public class FinalReferenceEscapeExample {
     public FinalReferenceEscapeExample(){
         i = 1;
         //引用逸出
-        //obj = this;
-    }
-
-    public static void writer(){
-        obj = new FinalReferenceEscapeExample();
+        obj = this;
     }
 
     public static void reader(){
-        FinalReferenceEscapeExample example = obj;
-        System.out.println("temp=" + example.i);
-        //if(obj != null){
-        //    System.out.println("temp=" + obj.i);
-        //}else{
-        //    System.out.println("obj is null");
-        //}
+        new FinalReferenceEscapeExample();
+    }
+
+    public static void writer(){
+        //FinalReferenceEscapeExample example = obj;
+        //int b = example.i;
+        //System.out.println("temp=" + example.i);
+        if(obj != null){
+            System.out.println("temp=" + obj.i);
+        }else{
+            System.out.println("obj is null");
+        }
     }
 
     public static void main(String[] args) {
