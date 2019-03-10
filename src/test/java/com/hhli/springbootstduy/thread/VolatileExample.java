@@ -34,8 +34,8 @@ public class VolatileExample {
             example.writer();
         });
 
-        readThread.start();
-        writeThread.start();
 
+        writeThread.start();
+        readThread.start();
     }
 }
