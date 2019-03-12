@@ -1,5 +1,7 @@
 package com.hhli.springbootstduy.concurrent;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * @author 李辉辉
  * @date 2019/3/10 17:56
@@ -7,7 +9,7 @@ package com.hhli.springbootstduy.concurrent;
  */
 public class InterruptedTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Thread sleepThread = new Thread(new SleepRunner(), "SleepThread");
         sleepThread.setDaemon(Boolean.TRUE);
 
@@ -17,7 +19,8 @@ public class InterruptedTest {
         sleepThread.start();
         busyThread.start();
 
-        SleepUtils.second(5L);
+        //SleepUtils.second(5L);
+        TimeUnit.SECONDS.sleep(5);
 
         sleepThread.interrupt();
         busyThread.interrupt();
