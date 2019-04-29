@@ -13,10 +13,21 @@ public class DistinctPath {
     }
 
     public static  int uniquePaths(int m, int n) {
-        if(m == 1 || n == 1){
-            return  1;
+        if(m == 0 || n == 0){
+            return  0;
         }
 
-        return  uniquePaths(m-1, n) + uniquePaths(n-1, m);
+        int[][] a = new int[m+1][n+1];
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                if(i == 1 || j == 1){
+                    a[i][j] = 1;
+                }else{
+                    a[i][j] = a[i-1][j] + a[i][j-1];
+                }
+            }
+        }
+
+        return  a[m][n];
     }
 }
