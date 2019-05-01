@@ -8,13 +8,13 @@ package com.hhli.springbootstduy.algothrims;
 public class MinkNum {
 
     public static void main(String[] args) {
-        System.out.println(findKthNumber(1000, 1000));
-        System.out.println(findKthNumber(13, 5));
-        System.out.println(findKthNumber(13, 6));
-        System.out.println(findKthNumber(20, 15));
-        System.out.println(findKthNumber(10, 3));
+        //System.out.println(findKthNumber(1000, 1000));
+        //System.out.println(findKthNumber(13, 5));
+        //System.out.println(findKthNumber(13, 6));
+        //System.out.println(findKthNumber(20, 15));
+        //System.out.println(findKthNumber(10, 3));
         long start = System.currentTimeMillis();
-        //System.out.println(findKthNumber(4289384 ,1922239));
+        System.out.println(findKthNumber(4289384 ,1922239));
         long end = System.currentTimeMillis();
         System.out.println("time waste:" + (end -start) + "mills");
     }
@@ -37,6 +37,14 @@ public class MinkNum {
                     base = ret;
                     //System.out.printf("%d,", ret);
                 }else{
+                    if(loop + 9 < n){
+                        ret = ret +9;
+                        loop = loop + 9;
+                    }else{
+                        ret  = ret + (n -loop);
+                        break;
+                    }
+
                     ret = ret+1;
                     if(ret%10 == 0){
                         while (ret%10 == 0){
