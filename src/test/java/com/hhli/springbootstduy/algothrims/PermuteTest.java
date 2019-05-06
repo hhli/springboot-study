@@ -1,8 +1,6 @@
 package com.hhli.springbootstduy.algothrims;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * @author 李辉辉
@@ -28,8 +26,14 @@ public class PermuteTest {
 
             return result;
         }
+        Map<String, String> tempMap = new HashMap<>(nums.length);
 
         for (int i = 0; i < nums.length; i++) {
+            if(tempMap.containsKey(String.valueOf(nums[i]))){
+                continue;
+            }else{
+                tempMap.put(String.valueOf(nums[i]), String.valueOf(nums[i]));
+            }
             int[] numTemp = new int[nums.length-1];
             for (int j = 0; j < nums.length - 1; j++) {
                 if(j<i){
