@@ -1,7 +1,7 @@
 package com.hhli.springbootstduy.jdk;
 
 import java.text.NumberFormat;
-
+import  static java.lang.Math.*;
 /**
  * @author 李辉辉
  * @date 2018/11/5 8:45
@@ -49,5 +49,7 @@ public class ArrayTest {
         System.out.println(format.format(0.10));
         format = NumberFormat.getPercentInstance();
         System.out.println(format.format(0.10));
+
+        sqrt(1);
     }
 }
