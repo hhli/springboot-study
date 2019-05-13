@@ -10,6 +10,7 @@ import java.util.Objects;
  * @description 我的理解通过访问器可以修改收敛，以及参数验证之类的动作
  */
 public  class Employee implements Cloneable{
+    private  static int nextId = 1;
 
     /**
      * 姓名
@@ -22,12 +23,20 @@ public  class Employee implements Cloneable{
     private double salary;
 
     /**
+     * 员工id标识
+     */
+    private int id;
+
+    /**
      *
      */
     private Date hireDay;
+    public Employee(String n, double s){
+        this.name = n;
+        this.salary = s;
+    }
 
     public Employee(String n, double s, int year, int moth, int day){
-        String name = n;
         this.name = n;
         this.salary = s;
         GregorianCalendar calendar = new GregorianCalendar(year, moth-1, day);
@@ -71,6 +80,19 @@ public  class Employee implements Cloneable{
     public void raiseSalary(double byPercent){
         double raise = salary * byPercent /100;
         salary += raise;
+    }
+
+    public void setId(){
+        this.id = nextId;
+        nextId++;
+    }
+
+    public static  int getNextId(){
+        return  nextId;
+    }
+
+    public int getId(){
+        return  this.id;
     }
 
     @Override

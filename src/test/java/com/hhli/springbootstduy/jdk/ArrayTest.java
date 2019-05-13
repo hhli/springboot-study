@@ -1,6 +1,6 @@
 package com.hhli.springbootstduy.jdk;
 
-import java.util.Arrays;
+import java.text.NumberFormat;
 
 /**
  * @author 李辉辉
@@ -35,14 +35,19 @@ public class ArrayTest {
         //
         //System.out.println("!");
 
-        int[][] magicSquare = {
-                {16, 3, 2, 13},
-                {5, 10, 11, 8},
-                {9, 6, 120, 8},
-                {11, 23, 56, 78}
-        };
+        //int[][] magicSquare = {
+        //        {16, 3, 2, 13},
+        //        {5, 10, 11, 8},
+        //        {9, 6, 120, 8},
+        //        {11, 23, 56, 78}
+        //};
+        //
+        //System.out.println(Arrays.toString(magicSquare));
+        //System.out.println(Arrays.deepToString(magicSquare));
 
-        System.out.println(Arrays.toString(magicSquare));
-        System.out.println(Arrays.deepToString(magicSquare));
+        NumberFormat format = NumberFormat.getCurrencyInstance();
+        System.out.println(format.format(0.10));
+        format = NumberFormat.getPercentInstance();
+        System.out.println(format.format(0.10));
     }
 }
