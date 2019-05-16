@@ -31,6 +31,12 @@ public  class Employee implements Cloneable{
      *
      */
     private Date hireDay;
+
+    public Employee(){
+
+    }
+
+
     public Employee(String n, double s){
         this.name = n;
         this.salary = s;
