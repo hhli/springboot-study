@@ -1,7 +1,7 @@
 package com.hhli.springbootstduy.jdk;
 
-import java.text.NumberFormat;
-import  static java.lang.Math.*;
+import com.hhli.springbootstduy.model.enums.RetCodeEnum;
+
 /**
  * @author 李辉辉
  * @date 2018/11/5 8:45
@@ -9,7 +9,7 @@ import  static java.lang.Math.*;
  */
 public class ArrayTest {
 
-    public static void main(String[] args) {
+    public static void main(String... args) {
         //int[] a1 = new int[]{1,2,3,4};
         //int[] a2 = {1, 2, 3, 4};
         //int[] a3 = new int[4];
@@ -45,11 +45,28 @@ public class ArrayTest {
         //System.out.println(Arrays.toString(magicSquare));
         //System.out.println(Arrays.deepToString(magicSquare));
 
-        NumberFormat format = NumberFormat.getCurrencyInstance();
-        System.out.println(format.format(0.10));
-        format = NumberFormat.getPercentInstance();
-        System.out.println(format.format(0.10));
+        //NumberFormat format = NumberFormat.getCurrencyInstance();
+        //System.out.println(format.format(0.10));
+        //format = NumberFormat.getPercentInstance();
+        //System.out.println(format.format(0.10));
+        //
+        //sqrt(1);
 
-        sqrt(1);
+        //ArrayList<Integer> tempLst = new ArrayList<>();
+        //tempLst.trimToSize();
+        //
+        ////System.out.println(tempLst.get(0));
+        //
+        //ArrayList temp = new ArrayList();
+        //temp.add(new Employee());
+        //temp.add(new Date());
+        ////System.out.println(temp.get(0));
+        //
+        //
+        //tempLst = (ArrayList<Integer>)temp;
+
+        //System.out.printf("%d %s", new Object[]{1, "2"});
+
+        System.out.println(Enum.valueOf(RetCodeEnum.class, "SUCCESS"));
     }
 }

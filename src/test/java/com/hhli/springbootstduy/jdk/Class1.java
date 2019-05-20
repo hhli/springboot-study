@@ -5,6 +5,6 @@ package com.hhli.springbootstduy.jdk;
  * @date 2018/11/3 16:18
  * @description
  */
-public class Class {
+public class Class1 {
 
 }
