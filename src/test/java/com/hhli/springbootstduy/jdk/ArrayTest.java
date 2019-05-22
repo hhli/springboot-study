@@ -1,6 +1,8 @@
 package com.hhli.springbootstduy.jdk;
 
-import com.hhli.springbootstduy.model.enums.RetCodeEnum;
+import java.lang.reflect.Array;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * @author 李辉辉
@@ -67,6 +69,44 @@ public class ArrayTest {
 
         //System.out.printf("%d %s", new Object[]{1, "2"});
 
-        System.out.println(Enum.valueOf(RetCodeEnum.class, "SUCCESS"));
+        //System.out.println(Enum.valueOf(RetCodeEnum.class, "SUCCESS"));
+
+        //Field[] fields = Employee.class.getDeclaredFields();
+        //AccessibleObject.setAccessible(fields, Boolean.TRUE);
+
+        //test(new Employee[100]);
+        //
+        //try {
+        //    Method m = Employee.class.getMethod("getNextId");
+        //    m.setAccessible(Boolean.TRUE);
+        //} catch (NoSuchMethodException e) {
+        //    e.printStackTrace();
+        //}
+
+        try {
+            Method m = ArrayTest.class.getMethod("test", Object[].class);
+            m.invoke(null, (Object) new Employee[100]);
+        } catch (NoSuchMethodException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void test(Object[] temp){
+        System.arraycopy(new Employee[100],0, new Object[100], 0, 100);
+        System.out.println("done");
+    }
+
+    public static Object goodCopyOf(Object a, int newLength){
+        Class c1 = a.getClass();
+        if(!c1.isArray()) return null;
+        Class componentType = c1.getComponentType();
+        int length = Array.getLength(a);
+        Object newArray = Array.newInstance(componentType, newLength);
+        System.arraycopy(a, 0, newArray, 0, Math.min(length, newLength));
+        return newArray;
     }
 }
