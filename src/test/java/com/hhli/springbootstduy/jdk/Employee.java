@@ -1,5 +1,7 @@
 package com.hhli.springbootstduy.jdk;
 
+import lombok.ToString;
+
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Objects;
@@ -9,7 +11,8 @@ import java.util.Objects;
  * @date 2018/11/21 8:30
  * @description 我的理解通过访问器可以修改收敛，以及参数验证之类的动作
  */
-public  class Employee implements Cloneable{
+@ToString
+public  class Employee implements Cloneable, Comparable<Employee>{
     private  static int nextId = 1;
 
     /**
@@ -36,10 +39,10 @@ public  class Employee implements Cloneable{
 
     }
 
-
     public Employee(String n, double s){
         this.name = n;
         this.salary = s;
+        hireDay = new Date();
     }
 
     public Employee(String n, double s, int year, int moth, int day){
@@ -79,7 +82,7 @@ public  class Employee implements Cloneable{
         if(Objects.isNull(this.hireDay)){
             this.hireDay = null;
         }else{
-            this.hireDay = (Date) this.hireDay.clone();
+            this.hireDay = (Date) hireDay.clone();
         }
     }
 
@@ -102,13 +105,19 @@ public  class Employee implements Cloneable{
     }
 
     @Override
-    public  Employee clone(){
+    final public  Employee clone() throws CloneNotSupportedException {
         Employee e = null;
-        try {
-            e = (Employee)super.clone();
-        } catch (CloneNotSupportedException e1) {
-            e1.printStackTrace();
+        //浅拷贝
+        e = (Employee)super.clone();
+        //深拷贝
+        if(Objects.nonNull(e.hireDay)){
+            e.hireDay = (Date) e.hireDay.clone();
         }
         return  e;
+    }
+
+    @Override
+    public int compareTo(Employee o) {
+        return Double.compare(salary, o.salary);
     }
 }

@@ -7,7 +7,7 @@ package com.hhli.springbootstduy.jdk;
  */
 public class EmployeeTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
         // fill the staff array with three employee objects
         Employee[] staff = new Employee[3];
         staff[0] = new Employee("Carl Cracker", 75000, 1987, 12, 15);
