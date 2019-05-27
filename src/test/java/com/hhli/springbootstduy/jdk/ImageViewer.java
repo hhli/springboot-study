@@ -13,14 +13,14 @@ public class ImageViewer {
 
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
-            JFrame frame = new ImageViewerFrame();
+            JFrame frame = new ImageViewerFrame2();
             frame.setTitle("ImageViewer");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setVisible(true);
         });
     }
 }
-class ImageViewerFrame extends JFrame{
+class ImageViewerFrame2 extends JFrame{
         private static final long serialVersionUID = -5209325431232445803L;
 
         private JLabel label;
@@ -28,7 +28,7 @@ class ImageViewerFrame extends JFrame{
         private static  final int DEFAULT_WIDTH = 300;
         private static final int DEFAULT_HEIGHT = 400;
 
-        public ImageViewerFrame(){
+        public ImageViewerFrame2(){
             // use a label to display images
             label = new JLabel();
             add(label);
