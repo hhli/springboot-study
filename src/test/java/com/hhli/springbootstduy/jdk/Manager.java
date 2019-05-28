@@ -5,12 +5,16 @@ package com.hhli.springbootstduy.jdk;
  * @date 2019/5/14 8:40
  * @description
  */
-public class Manager extends Employee {
+public class Manager extends Employee{
     private double bonus;
 
     public Manager(double bonus){
         super();
         this.bonus = bonus;
+    }
+
+    public Manager(String n, double s, int year, int moth, int day){
+        super(n, s, year, moth, day);
     }
 
     public double getBonus() {
