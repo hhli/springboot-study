@@ -6,5 +6,8 @@ package com.hhli.springbootstduy.other;
  * @description 测试接口
  */
 public interface Moveable {
-
+    /**
+     *
+     */
+     void move();
 }
