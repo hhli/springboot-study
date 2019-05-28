@@ -29,6 +29,9 @@
 		<lombok.version>1.16.18</lombok.version>
 		<feign.starter.version>1.4.5.RELEASE</feign.starter.version>
 		<cglib.version>3.2.8</cglib.version>
+
+		<kafka.version>0.10.0.1</kafka.version>
+		<testng.version>6.14.3</testng.version>
 	</properties>
 
 	<dependencies>
@@ -122,7 +125,14 @@
 		<dependency>
 			<groupId>org.apache.kafka</groupId>
 			<artifactId>kafka-clients</artifactId>
-			<version>0.10.0.1</version>
+			<version>${kafka.version}</version>
+		</dependency>
+
+		<!-- 单元测试相关 -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
 		</dependency>
 
 		<!--<dependency>-->

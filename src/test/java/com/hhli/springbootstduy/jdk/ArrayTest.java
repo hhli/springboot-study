@@ -1,8 +1,6 @@
 package com.hhli.springbootstduy.jdk;
 
 import java.lang.reflect.Array;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 /**
  * @author 李辉辉
@@ -83,16 +81,24 @@ public class ArrayTest {
         //    e.printStackTrace();
         //}
 
-        try {
-            Method m = ArrayTest.class.getMethod("test", Object[].class);
-            m.invoke(null, (Object) new Employee[100]);
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
-            e.printStackTrace();
-        }
+        //try {
+        //    Method m = ArrayTest.class.getMethod("test", Object[].class);
+        //    m.invoke(null, (Object) new Employee[100]);
+        //} catch (NoSuchMethodException e) {
+        //    e.printStackTrace();
+        //} catch (IllegalAccessException e) {
+        //    e.printStackTrace();
+        //} catch (InvocationTargetException e) {
+        //    e.printStackTrace();
+        //}
+
+        //StringBuilder builder = new StringBuilder();
+        //String s = null;
+        //builder.append(s);
+        //System.out.println(builder.toString());
+
+
+
     }
 
     public static void test(Object[] temp){

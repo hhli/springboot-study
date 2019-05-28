@@ -19,50 +19,53 @@ public class PairTest3 {
 
         Manager[] managers = {ceo, cfo};
 
-        Pair<Employee> result = new Pair<>();
+        ArrayAlg.Pair<Employee> result = new ArrayAlg.Pair<>();
 
         minMaxBonus(managers, result);
         System.out.println(
-                "first:" + result.getFirst.getName() + ", second:" + result.getSecond.getName());
+                "first:" + result.getFirst().getName() + ", second:" + result.getSecond().getName());
 
         maxMinBonus(managers, result);
         System.out.println(
-                "first:" + result.getFirst.getName() + ", second:" + result.getSecond.getName());
+                "first:" + result.getFirst().getName() + ", second:" + result.getSecond().getName());
+    }
+
+    public static void printBuddies(ArrayAlg.Pair<? extends Employee> p){
+        Employee first = p.getFirst();
+        Employee second = p.getSecond();
+        System.out.println(first.getName() + " and " + second.getName() + " are buddies.");
+    }
+
+
+    public static void minMaxBonus(Manager[] a, ArrayAlg.Pair<? super Manager> result){
+        if(a.length == 0) return;
+        Manager min = a[0];
+        Manager max = a[0];
+
+        for (int i = 0; i < a.length; i++) {
+            if(min.getBonus()>a[i].getBonus()) min = a[i];
+            if(max.getBonus()<a[i].getBonus()) max = a[i];
+        }
+
+        result.setFirst(min);
+        result.setSecond(max);
+    }
+
+    public static void maxMinBonus(Manager[] a, ArrayAlg.Pair<? super Manager> result){
+        minMaxBonus(a, result);
+        PairAlg.swapHeleper(result);
     }
 }
 
+
 class PairAlg {
-    public static boolean hasNull(ArrayAlg.Pair<>)
-}
+    public static boolean hasNull(ArrayAlg.Pair<?> p){
+        return  p.getFirst()!=null || p.getSecond()!=null;
+    }
 
-class ArrayAlg{
-    public static class  Pair<T extends Comparable>{
-        private T first;
-        private T second;
-
-        public Pair(T first, T second){
-            this.first = first;
-            this.second = second;
-        }
-
-        public T getFirst() {
-            return first;
-        }
-
-        public T getSecond() {
-            return second;
-        }
-
-        public static <T extends Comparable> Pair minMax(T[] values){
-            if(values==null || values.length==0) return null;
-            T min = values[0];
-            T max = values[0];
-            for (T value : values) {
-                if(min.compareTo(value)>0)  min = value;
-                if(max.compareTo(value)<0) max = value;
-            }
-
-            return new Pair(min, max);
-        }
+    public static <T> void swapHeleper(ArrayAlg.Pair<T> p){
+        T t = p.getFirst();
+        p.setFirst(p.getSecond());
+        p.setSecond(t);
     }
 }
