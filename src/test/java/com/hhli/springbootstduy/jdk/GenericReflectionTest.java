@@ -24,7 +24,8 @@ public class GenericReflectionTest {
         }
 
         try {
-            Class<?> c1 = ArrayAlg.Pair.class;
+            Class<?> c1 = Class.forName(name);
+            //com.hhli.springbootstduy.jdk.ArrayAlg$Pair
             printClass(c1);
 
             for (Method declaredMethod : c1.getDeclaredMethods()) {
