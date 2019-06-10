@@ -28,11 +28,11 @@ public class KafkaConsumerTest {
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
         //consumer.subscribe(Arrays.asList("epx-10x200x12x211-7521-hdic_core_new"));
 
-        TopicPartition p = new TopicPartition("epx-10x200x12x211-7521-hdic_core_new",3);
+        TopicPartition p = new TopicPartition("epx-10x200x12x211-7521-hdic_core_new",0);
 
         consumer.assign(Arrays.asList(p));
 
-        consumer.seek(p, 90000);
+        consumer.seek(p, 175767682);
 
 
         while (true) {
