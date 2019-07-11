@@ -1,6 +1,7 @@
 package com.hhli.springbootstduy.jdk;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * @author 李辉辉
@@ -97,8 +98,8 @@ public class ArrayTest {
         //builder.append(s);
         //System.out.println(builder.toString());
 
-
-
+        //System.out.println(Arrays.asList("1","2").toArray().getClass());
+        System.out.println(2>>1);
     }
 
     public static void test(Object[] temp){
