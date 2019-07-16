@@ -1,5 +1,7 @@
 package com.hhli.springbootstduy.jdk;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+
 import java.util.*;
 
 /**
@@ -16,6 +18,10 @@ public class ArrayListIterTest {
             add("3");
         }};
 
-        Spliterator<String> spliterator = strList.spliterator();
+        strList = Collections.synchronizedList(strList);
+
+        strList.add("4");
+
+        System.out.println(strList);
     }
 }
