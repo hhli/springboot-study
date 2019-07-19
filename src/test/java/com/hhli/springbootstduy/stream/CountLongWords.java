@@ -1,5 +1,7 @@
 package com.hhli.springbootstduy.stream;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -62,28 +64,32 @@ public class CountLongWords {
         Path path = Paths.get("D:\\github\\springboot-study\\src\\test\\resources\\example.txt");
         String contents = new String(Files.readAllBytes(path), StandardCharsets.UTF_8);
         Stream<String> words = Stream.of(contents.split("\\PL+"));
-        show("words", words);
+        //show("words", words);
 
-        Stream<String> song = Stream.of("gently", "dow", "the", "stream");
-        show("songs", song);
+        //Stream<String> song = Stream.of("gently", "dow", "the", "stream");
+        //show("songs", song);
+        //
+        //Stream<String> silence = Stream.empty();
+        //show("silence", silence);
+        //
+        //Stream<String> generate = Stream.generate(()->"echo");
+        //show("echo", generate);
+        //
+        //Stream<Double> random = Stream.generate(Math::random);
+        //show("random", random);
+        //
+        //Stream<BigInteger> integerStream = Stream.iterate(BigInteger.ZERO, n->n.add(BigInteger.ONE));
+        //show("integer", integerStream);
+        //
+        //Stream<String> wordsAnotherWay = Pattern.compile("\\PL+").splitAsStream(contents);
+        //show("wordsAnotherWay", wordsAnotherWay);
+        //
+        //try(Stream<String> lines = Files.lines(path, StandardCharsets.UTF_8)){
+        //    show("lines", lines);
+        //}
 
-        Stream<String> silence = Stream.empty();
-        show("silence", silence);
+        //System.out.println(words.parallel().filter(s->s.startsWith("Q")).findAny().orElse(StringUtils.EMPTY));
 
-        Stream<String> generate = Stream.generate(()->"echo");
-        show("echo", generate);
-
-        Stream<Double> random = Stream.generate(Math::random);
-        show("random", random);
-
-        Stream<BigInteger> integerStream = Stream.iterate(BigInteger.ZERO, n->n.add(BigInteger.ONE));
-        show("integer", integerStream);
-
-        Stream<String> wordsAnotherWay = Pattern.compile("\\PL+").splitAsStream(contents);
-        show("wordsAnotherWay", wordsAnotherWay);
-
-        try(Stream<String> lines = Files.lines(path, StandardCharsets.UTF_8)){
-            show("lines", lines);
-        }
+        System.out.println(words.parallel().noneMatch(s->s.startsWith("Q")));
     }
 }
