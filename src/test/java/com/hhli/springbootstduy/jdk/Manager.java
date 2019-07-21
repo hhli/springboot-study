@@ -1,11 +1,23 @@
 package com.hhli.springbootstduy.jdk;
 
+import lombok.ToString;
+
 /**
  * @author 李辉辉
  * @date 2019/5/14 8:40
  * @description
  */
+@ToString
 public class Manager extends Employee{
+
+    /**
+     * 秘书
+     */
+    private Employee secretary;
+
+    /**
+     * 奖金
+     */
     private double bonus;
 
     public Manager(double bonus){
@@ -28,6 +40,14 @@ public class Manager extends Employee{
     @Override
     public double getSalary() {
         return super.getSalary() + bonus;
+    }
+
+    public Employee getSecretary() {
+        return secretary;
+    }
+
+    public void setSecretary(Employee secretary) {
+        this.secretary = secretary;
     }
 
     public static void main(String[] args) throws CloneNotSupportedException {

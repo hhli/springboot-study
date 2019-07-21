@@ -2,6 +2,7 @@ package com.hhli.springbootstduy.other;
 
 import com.hhli.springbootstduy.jdk.Employee;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -13,11 +14,11 @@ public class EmployeeCloneTest {
 
     public static void main(String[] args) throws CloneNotSupportedException {
         Employee original = new Employee("hhli", 50000);
-        original.setHireDay(new Date(2000, 1, 1));
+        original.setHireDay(LocalDate.of(2000, 1, 1));
 
         Employee copy = original.clone();
         copy.raiseSalary(10);
-        copy.setHireDay(new Date(2002, 10, 10));
+        copy.setHireDay(LocalDate.of(2002,10, 10));
 
         System.out.println("original=" + original);
 
