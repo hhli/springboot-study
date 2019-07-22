@@ -19,4 +19,12 @@ public class Singleton4 {
     public static Singleton4 getInstance() {
         return SignletonHolder.INSTANCE;
     }
+
+    /**
+     * 反序列化一旦发现有readResolve方法，则直接调用readResolve方法返回的对象
+     * @return
+     */
+    private   Object readResolve(){
+        return SignletonHolder.INSTANCE;
+    }
 }

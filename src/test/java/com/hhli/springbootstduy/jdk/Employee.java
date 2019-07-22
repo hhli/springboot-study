@@ -1,5 +1,6 @@
 package com.hhli.springbootstduy.jdk;
 
+import com.hhli.springbootstduy.io.SerialCloneable;
 import lombok.ToString;
 
 import java.io.Serializable;
@@ -14,7 +15,7 @@ import java.util.Objects;
  * @description 我的理解通过访问器可以修改收敛，以及参数验证之类的动作
  */
 @ToString
-public  class Employee implements Cloneable, Comparable<Employee>, Serializable{
+public  class Employee extends SerialCloneable implements Comparable<Employee>{
     private  static int nextId = 1;
 
     /**
@@ -107,14 +108,7 @@ public  class Employee implements Cloneable, Comparable<Employee>, Serializable{
 
     @Override
     final public  Employee clone() throws CloneNotSupportedException {
-        Employee e = null;
-        //浅拷贝
-        e = (Employee)super.clone();
-        //深拷贝
-        if(Objects.nonNull(e.hireDay)){
-            e.hireDay =  LocalDate.of(hireDay.getYear(), hireDay.getMonthValue(), hireDay.getDayOfMonth());
-        }
-        return  e;
+        return  (Employee) super.clone();
     }
 
     @Override
