@@ -1,5 +1,6 @@
 package com.hhli.springbootstduy.jdk;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -31,7 +32,7 @@ public class BigIntegerTest {
 
         Employee employee = new Employee(){
             {
-                setHireDay(new Date());
+                setHireDay(LocalDate.now());
                 setId();
             }
 

@@ -1,7 +1,10 @@
 package com.hhli.springbootstduy.jdk;
 
+import com.hhli.springbootstduy.io.SerialCloneable;
 import lombok.ToString;
 
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Objects;
@@ -12,7 +15,7 @@ import java.util.Objects;
  * @description 我的理解通过访问器可以修改收敛，以及参数验证之类的动作
  */
 @ToString
-public  class Employee implements Cloneable, Comparable<Employee>{
+public  class Employee extends SerialCloneable implements Comparable<Employee>{
     private  static int nextId = 1;
 
     /**
@@ -31,9 +34,9 @@ public  class Employee implements Cloneable, Comparable<Employee>{
     private int id;
 
     /**
-     *
+     * 雇佣时间
      */
-    private Date hireDay;
+    private LocalDate hireDay;
 
     public Employee(){
 
@@ -42,14 +45,13 @@ public  class Employee implements Cloneable, Comparable<Employee>{
     public Employee(String n, double s){
         this.name = n;
         this.salary = s;
-        hireDay = new Date();
+        hireDay = LocalDate.now();
     }
 
     public Employee(String n, double s, int year, int moth, int day){
         this.name = n;
         this.salary = s;
-        GregorianCalendar calendar = new GregorianCalendar(year, moth-1, day);
-        hireDay = calendar.getTime();
+        hireDay = LocalDate.of(year, moth, day);
     }
 
 
@@ -69,20 +71,20 @@ public  class Employee implements Cloneable, Comparable<Employee>{
         this.salary = salary;
     }
 
-    public Date getHireDay() {
+    public LocalDate getHireDay() {
         //
         if(Objects.isNull(this.hireDay))
             return null;
         else{
-            return (Date) this.hireDay.clone();
+            return  LocalDate.of(hireDay.getYear(), hireDay.getMonthValue(), hireDay.getDayOfMonth());
         }
     }
 
-    public void setHireDay(Date hireDay) {
+    public void setHireDay(LocalDate hireDay) {
         if(Objects.isNull(this.hireDay)){
             this.hireDay = null;
         }else{
-            this.hireDay = (Date) hireDay.clone();
+            this.hireDay = LocalDate.of(hireDay.getYear(), hireDay.getMonthValue(), hireDay.getDayOfMonth());
         }
     }
 
@@ -106,14 +108,7 @@ public  class Employee implements Cloneable, Comparable<Employee>{
 
     @Override
     final public  Employee clone() throws CloneNotSupportedException {
-        Employee e = null;
-        //浅拷贝
-        e = (Employee)super.clone();
-        //深拷贝
-        if(Objects.nonNull(e.hireDay)){
-            e.hireDay = (Date) e.hireDay.clone();
-        }
-        return  e;
+        return  (Employee) super.clone();
     }
 
     @Override
