@@ -54,6 +54,6 @@ public class ThreadLocalTest {
 
     private static class Counter {
         private static ThreadLocal<StringBuilder> counter =
-                ThreadLocal.withInitial(() -> new StringBuilder());
+                ThreadLocal.withInitial(StringBuilder::new);
     }
 }
