@@ -80,11 +80,33 @@ public class MemoryMapTest{
         System.out.println("Input Stream:");
         long start = System.currentTimeMillis();
         long crcValue = checksumInputStream(fileName);
-        System.out.println(Long.toHexString(crcValue));
         long end = System.currentTimeMillis();
+        System.out.println(Long.toHexString(crcValue));
         System.out.println((end - start) + " milliseconds");
+        System.out.println("=======================");
 
-        System.out.println("Buffered Input Stream");
+        System.out.println("Buffered Input Stream:");
+        start = System.currentTimeMillis();
+        crcValue = checkBufferedInputStream(fileName);
+        end = System.currentTimeMillis();
+        System.out.println(Long.toHexString(crcValue));
+        System.out.println((end - start) + " milliseconds");
+        System.out.println("=======================");
 
+
+        System.out.println("Random Access File:");
+        start = System.currentTimeMillis();
+        crcValue = checksumRandomAccessFile(fileName);
+        end = System.currentTimeMillis();
+        System.out.println(Long.toHexString(crcValue));
+        System.out.println((end - start) + " milliseconds");
+        System.out.println("=======================");
+
+        System.out.println("Mapped File:");
+        start = System.currentTimeMillis();
+        crcValue = checksumMappedFile(fileName);
+        end = System.currentTimeMillis();
+        System.out.println(Long.toHexString(crcValue));
+        System.out.println((end - start) + " milliseconds");
     }
 }
