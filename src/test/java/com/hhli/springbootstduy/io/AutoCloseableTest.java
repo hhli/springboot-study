@@ -3,6 +3,7 @@ package com.hhli.springbootstduy.io;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 
 /**
  * @author 李辉辉
@@ -15,5 +16,12 @@ public class AutoCloseableTest {
         try(BufferedReader reader = new BufferedReader(new FileReader("test.sql"))){
             System.out.println(reader.lines().count());
         }
+
+        Reader reader = null;
+        if(reader instanceof  Reader){
+            System.out.println("ttt");
+        }
+
+
     }
 }
