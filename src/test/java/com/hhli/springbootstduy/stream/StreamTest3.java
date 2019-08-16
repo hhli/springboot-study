@@ -19,22 +19,23 @@ public class StreamTest3 {
         //List<String> strList = Arrays.asList("1", "2", "3");
         //System.out.println(String.join(";", strList));
 
-        List<Integer> intList = Stream.iterate(0, n->n+1).limit(1000).collect(Collectors.toList());
+        List<Integer> intList = Stream.iterate(0, n->n+1).limit(100).collect(Collectors.toList());
 
-        System.out.println(intList);
+        //System.out.println(intList);
 
         InheritableThreadLocal<Integer> threadLocal = new InheritableThreadLocal<>();
         threadLocal.set(111);
-        System.out.println("111" +threadLocal.get());
-        intList.parallelStream().forEach(t->{
-            try{
-                Thread.sleep(10);
-                if(Objects.isNull(threadLocal.get())){
-                    System.out.println(Thread.currentThread().getName());
-                }
-            }catch (Exception e){
-                e.printStackTrace();
+        System.out.println("哈哈：" +threadLocal.get());
+
+        intList.parallelStream().map(t->{
+            if(Objects.isNull(threadLocal.get())){
+                System.out.println(Thread.currentThread().getName());
             }
+
+            return  t;
+            //if(Math.random() * 100 % 83 == 0){
+            //    throw new RuntimeException("test");
+            //}
         });
 
     }
