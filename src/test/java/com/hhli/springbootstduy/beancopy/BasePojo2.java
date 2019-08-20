@@ -13,7 +13,9 @@ import java.util.TreeSet;
 public class BasePojo2 implements Cloneable{
 
     private Date date = new Date();
+     BasePojo2(){
 
+    }
     @Override
     public BasePojo2 clone() throws CloneNotSupportedException {
         return (BasePojo2) super.clone();
@@ -22,4 +24,12 @@ public class BasePojo2 implements Cloneable{
     public static void main(String[] args) {
         Set<BasePojo2> testSet = new TreeSet<>();
     }
+}
+
+class t1{
+
+}
+
+class t2{
+
 }
