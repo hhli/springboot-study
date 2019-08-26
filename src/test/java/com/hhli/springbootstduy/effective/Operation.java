@@ -4,6 +4,7 @@ import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.DoubleBinaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -14,42 +15,51 @@ import java.util.stream.Stream;
  */
 public enum Operation {
 
-    PLUS("+"){
-        @Override
-        public double apply(double x, double y) {
-            return x+y;
-        }
-    },
-    MINUS("-"){
-        @Override
-        public double apply(double x , double y){
-            return  x-y;
-        }
-    },
-    TIMES("*") {
-        @Override
-        public double apply(double x, double y) {
-            return x*y;
-        }
-    },
-    DIVIDE("/") {
-        @Override
-        public double apply(double x, double y) {
-            return x/y;
-        }
-    };
+    PLUS("+", (x, y)-> x+y),
+    //        {
+    //    @Override
+    //    public double apply(double x, double y) {
+    //        return x+y;
+    //    }
+    //},
+    MINUS("-", (x, y)-> x-y),
+    //        {
+    //    @Override
+    //    //public double apply(double x , double y){
+    //    //    return  x-y;
+    //    //}
+    //},
+    TIMES("*", (x, y)->x*y) ,
+    //        {
+    //    @Override
+    //    public double apply(double x, double y) {
+    //        return x*y;
+    //    }
+    //},
+    DIVIDE("/", (x, y)->x/y) ;
+            //{
+    //    @Override
+    //    public double apply(double x, double y) {
+    //        return x/y;
+    //    }
+    //};
 
 
     private final String symbol;
-    Operation(String symbol){
+    private final DoubleBinaryOperator op;
+    Operation(String symbol, DoubleBinaryOperator op){
         this.symbol = symbol;
+        this.op = op;
     }
 
     @Override
     public String toString(){
         return  symbol;
     }
-    public abstract double apply(double x, double y);
+    //public abstract double apply(double x, double y);
+    public double apply(double x, double y){
+        return op.applyAsDouble(x, y);
+    }
 
 
     private static final Map<String, Operation> tempMap = new HashMap<>();
