@@ -1,7 +1,8 @@
 package com.hhli.springbootstduy.jdk;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * @author 李辉辉
@@ -99,21 +100,51 @@ public class ArrayTest {
         //System.out.println(builder.toString());
 
         //System.out.println(Arrays.asList("1","2").toArray().getClass());
-        System.out.println(2>>1);
+        //System.out.println(2>>1);
+
+        //List<String> tempList = new ArrayList<>();
+        //tempList.add("1");
+        //tempList.add("2");
+        //for (String str : tempList) {
+        //    System.out.println(str);
+        //    tempList.remove(str);
+        //}
+        //ArrayList<Integer> list = new ArrayList<>();
+        //list.add(2);
+        //Iterator<Integer> iterator = list.iterator();
+        //while(iterator.hasNext()){
+        //    Integer integer = iterator.next();
+        //    list.remove(integer);
+        //}
+
+        List<String> strList = new ArrayList<String>(){{
+            add("1");
+            add("2");
+            add("3");
+        }};
+        Iterator<String> iterator = strList.iterator();
+        while (iterator.hasNext()){
+            String str = iterator.next();
+            System.out.println(str);
+            iterator.remove();
+            //出现ConcurrentModificationException
+            strList.remove(str);
+        }
     }
 
-    public static void test(Object[] temp){
-        System.arraycopy(new Employee[100],0, new Object[100], 0, 100);
-        System.out.println("done");
-    }
+    //public static void test(Object[] temp){
+    //    //System.arraycopy(new Employee[100],0, new Object[100], 0, 100);
+    //    //System.out.println("done");
+    //
+    //}
 
-    public static Object goodCopyOf(Object a, int newLength){
-        Class c1 = a.getClass();
-        if(!c1.isArray()) return null;
-        Class componentType = c1.getComponentType();
-        int length = Array.getLength(a);
-        Object newArray = Array.newInstance(componentType, newLength);
-        System.arraycopy(a, 0, newArray, 0, Math.min(length, newLength));
-        return newArray;
-    }
+    //public static Object goodCopyOf(Object a, int newLength){
+    //    Class c1 = a.getClass();
+    //    if(!c1.isArray()) return null;
+    //    Class componentType = c1.getComponentType();
+    //    int length = Array.getLength(a);
+    //    Object newArray = Array.newInstance(componentType, newLength);
+    //    System.arraycopy(a, 0, newArray, 0, Math.min(length, newLength));
+    //    return newArray;
+    //}
 }
