@@ -1,10 +1,7 @@
 package com.hhli.springbootstduy.stream;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Stream;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author 李辉辉
@@ -20,15 +17,27 @@ public class StreamTest2 {
         //System.out.println(Arrays.toString(temp));
 
         //Stream.iterate(1.0, p -> p * 2.0).peek(e->System.out.println("Fetching:" + e));
+        //
+        //List<String> results = new ArrayList<>();
+        //Stream.of("11").findFirst().ifPresent(System.out::println);
+        //Stream.of("11").findFirst().ifPresent(results::add);
+        //
+        //Stream.of("11").findFirst().map(results::add);
+        //
+        //System.out.println(results);
+        //
+        //Optional.of("111");
 
-        List<String> results = new ArrayList<>();
-        Stream.of("11").findFirst().ifPresent(System.out::println);
-        Stream.of("11").findFirst().ifPresent(results::add);
+        //System.out.println(Integer.MAX_VALUE);
+        //int i = 1567740672;
+        //System.out.println(Math.round(1567740625.0) == i);
 
-        Stream.of("11").findFirst().map(results::add);
+        Map<String, String> tempMap = new HashMap<>(2);
+        tempMap.put("1", "1");
 
-        System.out.println(results);
-
-        Optional.of("111");
+        for (Map.Entry<String, String> tempEntry : tempMap.entrySet()) {
+            System.out.println(tempEntry);
+            tempMap.remove(tempEntry.getKey());
+        }
     }
 }
