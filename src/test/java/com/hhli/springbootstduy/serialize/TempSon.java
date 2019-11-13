@@ -12,6 +12,8 @@ import lombok.ToString;
 @ToString(callSuper = true)
 public class TempSon extends Temp{
 
+    private static final long serialVersionUID = 1203690938440132417L;
+
     /**
      * 兴趣
      */
@@ -20,5 +22,10 @@ public class TempSon extends Temp{
     public  TempSon(double money, int age, int weight, String hobby){
         super(money, age, weight);
         this.hobby = hobby;
+    }
+
+
+    public TempSon(){
+        super(0.0d, 10, 10);
     }
 }
