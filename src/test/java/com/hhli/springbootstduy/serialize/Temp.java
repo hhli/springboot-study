@@ -94,6 +94,8 @@ public class Temp extends TempFather implements Serializable{
     //}
 
     private void writeObject(java.io.ObjectOutputStream out) throws IOException{
+        //https://stackoverflow.com/questions/16239239/why-does-the-defaultwriteobject-function-have-to-be-called-first-when-writing-in
+        //第一行应该是default
         out.defaultWriteObject();
         out.writeInt(age);
         out.writeInt(weight);
@@ -101,6 +103,7 @@ public class Temp extends TempFather implements Serializable{
     }
 
     private void readObject(java.io.ObjectInputStream in) throws IOException, ClassNotFoundException{
+        //第一行应该是default
         in.defaultReadObject();
         age = in.readInt();
         weight = in.readInt();
