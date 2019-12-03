@@ -17,6 +17,7 @@ public class FindDuplicate {
             sum += num;
         }
 
+
         return  sum -  (nums.length-1) * nums.length / 2;
     }
 }

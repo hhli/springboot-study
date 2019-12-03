@@ -1,11 +1,13 @@
 package com.hhli.springbootstduy.jdk;
 
+import lombok.Data;
+
 /**
  * @author 李辉辉
  * @date 2019-11-13 20:52
  * @description
  */
-//@Data
+@Data
 public class Son extends Father{
 
     private long processId;
