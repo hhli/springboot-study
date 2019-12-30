@@ -40,7 +40,7 @@ public class LoadFish {
         return  result;
     }
 
-    public static int splitByNum(int n, int num, int temp){
+    public static int splitByNum(int n, int num, int limit){
         if(n/num > 10){
             return 0;
         }
@@ -53,7 +53,7 @@ public class LoadFish {
         int average = (n+num-1)/num;
         int max = n-num+1;
         while(max>=average){
-            if(max>temp){
+            if(max>limit){
                 max--;
                 continue;
             }
