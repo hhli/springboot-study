@@ -11,7 +11,9 @@ public class FindDuplicate {
         //Long temp = 1L;
         //System.out.println(temp.equals(1));
 
-        System.out.println(findDuplicate(new int[]{3,1,3,4,2}));
+        //System.out.println(findDuplicate(new int[]{3,1,3,4,2}));
+
+        System.out.println(Integer.parseInt("8010203050608"));
     }
 
     public static int findDuplicateOne(int[] nums) {
