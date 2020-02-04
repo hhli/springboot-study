@@ -1,5 +1,9 @@
 package com.hhli.springbootstduy.stream;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * @author 李辉辉
  * @date 2019/12/15 16:35
@@ -7,10 +11,10 @@ package com.hhli.springbootstduy.stream;
  */
 public class MainLambda {
     public static void main(String[] args) {
-        new Thread(
-                () -> System.out.println("Lambda Thread run()")
-        ).start();;
-    }
+    //    new Thread(
+    //            () -> System.out.println("Lambda Thread run()")
+    //    ).start();;
+    //}
 
     //Runnable r1 = () -> { System.out.println(this); };
     //Runnable r2 = () -> { System.out.println(toString()); };
@@ -28,5 +32,15 @@ public class MainLambda {
     //
     //@Override
     //public String toString() { return "Hello Hoolee"; }
+
+        Calendar calendar = Calendar.getInstance();
+        // 2014-12-26
+        calendar.set(2010, Calendar.NOVEMBER, 26);
+        Date strDate1 = calendar.getTime();
+        SimpleDateFormat f1 = new SimpleDateFormat("YYYY-MM-dd");
+        System.out.println("Result for YYYY: " + f1.format(strDate1));
+        SimpleDateFormat f2 = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println("Result for yyyy: " + f2.format(strDate1));
+    }
 
 }
