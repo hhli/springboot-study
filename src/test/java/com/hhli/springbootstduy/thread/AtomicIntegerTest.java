@@ -1,8 +1,5 @@
 package com.hhli.springbootstduy.thread;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
 /**
  * @author 李辉辉
  * @date 2018/11/24 16:06
@@ -14,22 +11,31 @@ public class AtomicIntegerTest {
     //static MyselfAtomicInteger count = new MyselfAtomicInteger();
     static MyselfAtomicInteger count = new MyselfAtomicInteger(100000);
     public static void main(String[] args) {
+        //
+        //ExecutorService executor = Executors.newFixedThreadPool(5);
+        //
+        //for(int k =0; k<100; k++){
+        //    executor.submit(() -> {
+        //        for(int i = 0; i<1000; i++){
+        //            //System.out.println(count.incrementAndGet());
+        //            //System.out.println(count++);
+        //            System.out.println(count.decrementAndGet());
+        //        }
+        //    });
+        //}
+        //
+        //System.out.println("result  of accumulated sun = " + count);
+        //executor.shutdown();
+        //
+        //System.out.println("end~~~");
 
-        ExecutorService executor = Executors.newFixedThreadPool(5);
 
-        for(int k =0; k<100; k++){
-            executor.submit(() -> {
-                for(int i = 0; i<1000; i++){
-                    //System.out.println(count.incrementAndGet());
-                    //System.out.println(count++);
-                    System.out.println(count.decrementAndGet());
-                }
-            });
-        }
 
-        System.out.println("result  of accumulated sun = " + count);
-        executor.shutdown();
+        Thread t = new Thread(()->{
+            throw  new RuntimeException("test");
+        });
+        t.start();
 
-        System.out.println("end~~~");
+        System.out.println("hh");
     }
 }

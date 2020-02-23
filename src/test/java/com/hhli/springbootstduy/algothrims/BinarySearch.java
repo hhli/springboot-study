@@ -1,5 +1,7 @@
 package com.hhli.springbootstduy.algothrims;
 
+import java.util.Objects;
+
 /**
  * @author 李辉辉
  * @date 2019/4/6 17:19
@@ -28,6 +30,8 @@ public class BinarySearch {
            indexWithoutRecursion(array, 501);
         }
         System.out.println("cost time is:" + (System.currentTimeMillis() - start) + "ms");
+
+        System.out.println(0 & ((1 << 29) - 1));
     }
 
     /**
@@ -53,6 +57,10 @@ public class BinarySearch {
     }
 
     public static  int indexWithoutRecursion(int [] array, int key){
+        if(Objects.isNull(array) || array.length==0){
+           return -1;
+        }
+
         int begin = 0;
         int end = array.length -1;
         int index = -1;

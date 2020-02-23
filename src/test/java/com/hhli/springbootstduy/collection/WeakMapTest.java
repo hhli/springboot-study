@@ -2,6 +2,7 @@ package com.hhli.springbootstduy.collection;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 import java.util.WeakHashMap;
 
 /**
@@ -30,5 +31,9 @@ public class WeakMapTest {
 
         System.out.println("weakMap=" + weakMap);
         //System.out.println("tempMap=" + tempMap);
+
+        TreeMap<String, String> test = new TreeMap<>();
+        test.put(null, "1");
+        System.out.println();
     }
 }
