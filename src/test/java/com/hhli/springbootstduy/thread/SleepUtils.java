@@ -16,4 +16,13 @@ public class SleepUtils {
             e.printStackTrace();
         }
     }
+
+
+    public static  final void   millsecond(long seconds){
+        try {
+            TimeUnit.MILLISECONDS.sleep(seconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
