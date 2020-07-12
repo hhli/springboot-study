@@ -19,9 +19,8 @@ public class DateTest {
 
     private static final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public static void main(String[] args) throws IOException {
-        Runtime.getRuntime().exec(" sudo date -s 11:55:00");
-        System.out.println(System.currentTimeMillis());
+    public static void main(String[] args) throws IOException, InterruptedException {
+        testRateLimit();
     }
 
     public static void testRateLimit() {
