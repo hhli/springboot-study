@@ -1,7 +1,9 @@
 package com.hhli.springbootstduy.io;
 
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.net.InetAddress;
+import java.util.LinkedHashMap;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -33,15 +35,34 @@ public class IoTest1 {
         //    }
         //
         //}
+
+
+
         while (true){
             InetAddress inetAddress = InetAddress.getByName("cms.gateway.ke.com");
             System.out.println(inetAddress.getHostAddress());
 
             try {
                 TimeUnit.SECONDS.sleep(1);
-            } catch (InterruptedException e) {
+                clearCache();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+    }
+
+
+    public static void clearCache() throws NoSuchFieldException, IllegalAccessException {
+        //修改缓存数据开始
+        Class clazz = java.net.InetAddress.class;
+        final Field cacheField = clazz.getDeclaredField("addressCache");
+        cacheField.setAccessible(true);
+        final Object obj = cacheField.get(clazz);
+        Class cacheClazz = obj.getClass();
+        final Field cacheMapField = cacheClazz.getDeclaredField("cache");
+        cacheMapField.setAccessible(true);
+        final LinkedHashMap<String, ?> cacheMap = (LinkedHashMap<String, ?>)cacheMapField.get(obj);
+
+        cacheMap.clear();
     }
 }
