@@ -1,5 +1,7 @@
 package com.hhli.springbootstduy.algothrims;
 
+import java.util.*;
+
 /**
  * @author 李辉辉
  * @date 2020-10-14 08:49
@@ -85,7 +87,141 @@ public class PivotTest {
     }
 
 
+    public static int[][] merge(int[][] intervals) {
+        if(intervals==null || intervals.length<=1){
+            return intervals;
+        }
+
+        Arrays.sort(intervals, Comparator.comparingInt(o -> o[0]));
+
+        List<int[]> result = new ArrayList<>(intervals.length);
+        result.add(intervals[0]);
+        for (int[] interval : intervals) {
+            if(interval[0]>result.get(result.size()-1)[1]){
+                result.add(interval);
+            }else{
+                if(interval[1]>result.get(result.size()-1)[1]){
+                    result.get(result.size()-1)[1] = interval[1];
+                }
+            }
+        }
+
+        return result.toArray(new int[][]{});
+    }
+
+
+    public static void rotate(int[][] matrix) {
+        if(matrix !=null && matrix.length>1){
+            int n = matrix.length;
+
+            //矩阵上下交换
+            for (int i = 0; i < n / 2; i++) {
+                for (int j = 0; j < n; j++) {
+                     int temp = matrix[i][j];
+                     matrix[i][j] = matrix[n-i-1][j];
+                     matrix[n-i-1][j] = temp;
+                }
+            }
+
+            //对角线交换
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if(i<j){
+                        int temp = matrix[i][j];
+                        matrix[i][j] = matrix[j][i];
+                        matrix[j][i] = temp;
+                    }
+                }
+            }
+
+        }
+
+    }
+
+    public static void setZeroes(int[][] matrix) {
+        if(matrix!=null && matrix.length>0) {
+            Set<Integer> rowSet = new HashSet<>(matrix.length);
+            Set<Integer> colSet = new HashSet<>(matrix[0].length);
+
+            for (int i = 0; i < matrix.length; i++) {
+                for (int j = 0; j < matrix[0].length; j++) {
+                    if(matrix[i][j] == 0){
+                        rowSet.add(i);
+                        colSet.add(j);
+                    }
+                }
+            }
+            if(!rowSet.isEmpty()){
+                for (Integer i : rowSet) {
+                    for (int j = 0; j < matrix[0].length; j++) {
+                        matrix[i][j] = 0;
+                    }
+                }
+
+                for (int i = 0; i < matrix.length; i++) {
+                    for (Integer j : colSet) {
+                        matrix[i][j] = 0;
+                    }
+                }
+
+            }
+        }
+
+    }
+
+    public static int[] findDiagonalOrder(int[][] matrix) {
+        if(matrix == null || matrix.length == 0){
+            return new int[0];
+        }
+
+        int[] temp = new int[matrix.length * matrix[0].length];
+
+        int row = 0, col = 0;
+        int index = 0;
+        temp[index] = matrix[row][col];
+
+        for (int i = 1; i < matrix.length + matrix[0].length-1; i++) {
+            if(col<matrix[0].length-1){
+                col++;
+            }else{
+                row++;
+            }
+
+            List<Integer> tempList = new ArrayList<>();
+            tempList.add(matrix[row][col]);
+
+            int tempRow=row, tempCol=col;
+            while(tempCol>0 && tempRow<matrix.length-1){
+                tempList.add(matrix[++tempRow][--tempCol]);
+            }
+
+            System.out.println("tempList" + tempList);
+            if(i%2==0){
+                //逆向添加
+                for (int j = tempList.size() - 1; j >= 0; j--) {
+                    temp[++index] = tempList.get(j);
+                }
+            }else{
+                //正向添加
+                for (int j = 0; j < tempList.size(); j++) {
+                    temp[++index] = tempList.get(j);
+                }
+            }
+
+        }
+
+        return temp;
+    }
+
     public static void main(String[] args) {
-        System.out.println(searchInsert(new int[]{1,3,5,6}, 4    ));
+        //List<Integer> list = Arrays.asList(1, 5, 2, 7, 9);
+        //list.sort(Comparator.comparingInt(Integer::intValue));
+        //System.out.println(list);
+        //int[][] temp = {{1,3},{2,6},{8,10},{15,18}};
+        //int[][] temp = {{1,8},{2,3}};
+        //merge(temp);
+        int[] temp = findDiagonalOrder(new int[][]{{1,2,3,4,5}, {6,7,8,9,10}, {11,12,13,14,15}, {16,17,18,19,20}});
+
+        System.out.println(Arrays.toString(temp));
     }
 }
