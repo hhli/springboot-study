@@ -151,27 +151,17 @@
 			<version>${util.verison}</version>
 		</dependency>
 
-        <!--<dependency>-->
-			<!--<groupId>com.sun.tools.btrace</groupId>-->
-			<!--<artifactId>btrace-agent</artifactId>-->
-			<!--<version>1.3.10</version>-->
-			<!--<scope>system</scope>-->
-			<!--<systemPath>C:/btrace/build/btrace-agent.jar</systemPath>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>com.sun.tools.btrace</groupId>-->
-			<!--<artifactId>btrace-boot</artifactId>-->
-			<!--<version>1.3.10</version>-->
-			<!--<scope>system</scope>-->
-			<!--<systemPath>C:/btrace/build/btrace-boot.jar</systemPath>-->
-		<!--</dependency>-->
-		<!--<dependency>-->
-			<!--<groupId>com.sun.tools.btrace</groupId>-->
-			<!--<artifactId>btrace-client</artifactId>-->
-			<!--<version>1.3.9</version>-->
-			<!--<scope>system</scope>-->
-			<!--<systemPath>C:/btrace/build/btrace-client.jar</systemPath>-->
-		<!--</dependency>-->
+		<dependency>
+			<groupId>jaxen</groupId>
+			<artifactId>jaxen</artifactId>
+			<version>1.1.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>dom4j</groupId>
+			<artifactId>dom4j</artifactId>
+			<version>1.6.1</version>
+		</dependency>
 
 	</dependencies>
 
