@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @date 2020-05-25 12:20
  * @description
  */
-public class TestDefalut {
+public class TestDefault {
 
     public void reverseString(char[] s){
         if(s == null ||  s.length<=1){
@@ -55,6 +55,44 @@ public class TestDefalut {
         return result;
     }
 
+    public int removeElement(int[] nums, int val) {
+        if(nums == null || nums.length == 0){
+            return  0;
+        }
+
+        int slow=0;
+        for (int num : nums) {
+            if(val != num){
+                nums[slow]  = num;
+                slow++;
+            }
+        }
+
+        return slow;
+    }
+
+    public int findMaxConsecutiveOnes(int[] nums) {
+        int slow = 0;
+        int temp = 0;
+        for (int num : nums) {
+            if(num == 1){
+                slow++;
+            } else {
+                if(slow>temp){
+                    temp = slow;
+                }
+                slow = 0;
+            }
+        }
+
+        if(slow > temp){
+            temp = slow;
+        }
+
+        return temp;
+    }
+
+
     public static void main(String[] args) throws InterruptedException {
         //CountDownLatch latch = new CountDownLatch(2);
         //
@@ -67,7 +105,7 @@ public class TestDefalut {
         //
         //latch.await(1, TimeUnit.SECONDS);
 
-        System.out.println(-2/2);
+        System.out.println(-2>>1);
 
     }
 
