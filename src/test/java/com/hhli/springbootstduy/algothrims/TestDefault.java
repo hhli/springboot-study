@@ -1,6 +1,8 @@
 package com.hhli.springbootstduy.algothrims;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author 李辉辉
@@ -93,6 +95,98 @@ public class TestDefault {
     }
 
 
+    public int minSubArrayLen(int s, int[] nums) {
+
+        int sum = 0, temp = Integer.MAX_VALUE, slow=0, fast=0;
+        while (fast<nums.length){
+            sum += nums[fast];
+            if(sum>=s) {
+                if (temp > fast - slow + 1) {
+                    temp = fast - slow + 1;
+                }
+                slow++;
+                fast = slow;
+                System.out.println("slow=" + slow);
+                sum = 0;
+            }else{
+                fast++;
+            }
+        }
+
+        return temp == Integer.MAX_VALUE ? 0 : temp;
+    }
+
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> result = new ArrayList<>(numRows);
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> temp = new ArrayList<>(i+1);
+            for (int j = 0; j < i+1; j++) {
+                if(j==0 || j==i){
+                    temp.add(1);
+                } else {
+                    List<Integer> lasList = result.get(i-1);
+                    temp.add(lasList.get(j)+ lasList.get(j-1));
+                }
+            }
+
+            result.add(temp);
+        }
+
+        return result;
+    }
+
+
+    public List<Integer> getRow(int rowIndex) {
+        List<Integer> resultList = new ArrayList<>(rowIndex+1);
+        for (int i = 0; i < rowIndex+1; i++) {
+            resultList.add(0);
+        }
+        resultList.set(0,1);
+        for (int i = 1; i < rowIndex+1; i++) {
+            for (int j = i; j > 0; j--) {
+
+                resultList.set(j, resultList.get(j) + resultList.get(j-1));
+            }
+        }
+
+        return resultList;
+    }
+
+    public String reverseWords(String s) {
+        if(s==null || s.length()<=1){
+            return s;
+        }
+
+        char[] tempArray = s.toCharArray();
+        char temp;
+        int slow=0, fast=0;
+        while (fast < tempArray.length){
+            if(tempArray[fast] == 32){
+                for (int j = 0; j < (fast-slow+1)/2; j++) {
+                    temp = tempArray[slow+j];
+                    tempArray[slow+j] = tempArray[fast-1-j];
+                    tempArray[fast-1-j] = temp;
+                }
+                fast++;
+                slow = fast;
+            }else{
+                fast++;
+            }
+        }
+
+        if(slow!=fast){
+            for (int j = 0; j < (fast-slow+1)/2; j++) {
+                temp = tempArray[slow+j];
+                tempArray[slow+j] = tempArray[fast-1-j];
+                tempArray[fast-1-j] = temp;
+            }
+        }
+        
+        return new String(tempArray);
+    }
+
+
     public static void main(String[] args) throws InterruptedException {
         //CountDownLatch latch = new CountDownLatch(2);
         //
@@ -105,8 +199,10 @@ public class TestDefault {
         //
         //latch.await(1, TimeUnit.SECONDS);
 
-        System.out.println(-2>>1);
-
+        //System.out.println(-2>>1);
+        //System.out.println(default1.generate(5));
+        TestDefault default1 = new TestDefault();
+        System.out.println(default1.reverseWords("Let's take LeetCode contest"));
     }
 
 }
