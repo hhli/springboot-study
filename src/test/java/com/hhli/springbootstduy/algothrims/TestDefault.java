@@ -1,5 +1,6 @@
 package com.hhli.springbootstduy.algothrims;
 
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -187,6 +188,83 @@ public class TestDefault {
     }
 
 
+    public int findMin(int[] nums){
+        if(nums==null || nums.length==0){
+            return -1;
+        }
+
+        int i=0;
+        while (i<nums.length-1){
+            if(nums[i] < nums[i+1]){
+                i++;
+            }else {
+                i++;
+                break;
+            }
+        }
+
+        return nums[0]>nums[i] ? nums[i]:nums[0];
+    }
+
+    public int removeDuplicates(int[] nums) {
+        int slow=0, fast=0;
+        while(fast<nums.length){
+            if(nums[slow] != nums[fast]){
+                slow++;
+                nums[slow]  = nums[fast];
+            }
+            fast++;
+        }
+
+        return slow;
+    }
+
+    public void moveZeroes(@NotNull int[] nums) {
+        int slow=0, fast=0;
+        while (fast<nums.length && slow<nums.length ){
+            if(nums[slow]==0 && nums[fast]!= 0){
+                int temp = nums[slow];
+                nums[slow] = nums[fast];
+                nums[fast] = temp;
+            }
+
+            if(nums[slow]!=0){
+                slow++;
+            }
+            if(nums[fast]==0){
+                fast++;
+            }
+
+            if(slow>fast){
+                fast = slow;
+            }
+        }
+    }
+
+    public int maxDistToClosest(int[] seats) {
+        int slow = 0, fast = 0;
+        int max = -1;
+        while (fast<seats.length){
+            if(seats[fast] == 1){
+                int temp;
+                if(slow == 0){
+                    temp = fast -slow;
+                }else{
+                    temp = (fast -slow)/2;
+                }
+                max =  max>temp? max:temp;
+                fast++;
+                slow = fast;
+            }else{
+                fast++;
+            }
+        }
+
+        int temp = (fast -slow);
+        max =  max>temp? max:temp;
+        return max;
+    }
+
     public static void main(String[] args) throws InterruptedException {
         //CountDownLatch latch = new CountDownLatch(2);
         //
@@ -201,8 +279,20 @@ public class TestDefault {
 
         //System.out.println(-2>>1);
         //System.out.println(default1.generate(5));
-        TestDefault default1 = new TestDefault();
-        System.out.println(default1.reverseWords("Let's take LeetCode contest"));
+        //TestDefault default1 = new TestDefault();
+        //System.out.println(default1.reverseWords("Let's take LeetCode contest"));
+
+        //List<String> tempList = Arrays.asList("1", "2");
+        //System.out.println(tempList.stream().map(t->t+"1").collect(Collectors.toList()));
+        //System.out.println(default2.findMin(new int[]{3,4,5,1,2}));
+
+        TestDefault default2 = new TestDefault();
+
+        int[] nums = new int[]{0, 1, 0};
+        default2.moveZeroes(nums);
+
+        System.out.println(Arrays.toString(nums));
+
     }
 
 }
