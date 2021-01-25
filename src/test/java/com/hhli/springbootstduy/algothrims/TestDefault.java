@@ -4,6 +4,7 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @author 李辉辉
@@ -286,13 +287,19 @@ public class TestDefault {
         //System.out.println(tempList.stream().map(t->t+"1").collect(Collectors.toList()));
         //System.out.println(default2.findMin(new int[]{3,4,5,1,2}));
 
-        TestDefault default2 = new TestDefault();
+        //TestDefault default2 = new TestDefault();
+        //
+        //int[] nums = new int[]{0, 1, 0};
+        //default2.moveZeroes(nums);
+        //
+        //System.out.println(Arrays.toString(nums));
 
-        int[] nums = new int[]{0, 1, 0};
-        default2.moveZeroes(nums);
-
-        System.out.println(Arrays.toString(nums));
-
+        Stack<Integer> temp = new Stack<>();
+        temp.push(3);
+        temp.push(2);
+        temp.push(1);
+        System.out.println(temp.pop());
+        System.out.println(new ArrayList<>(temp));
     }
 
 }
