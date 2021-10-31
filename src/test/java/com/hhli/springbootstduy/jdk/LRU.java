@@ -1,6 +1,5 @@
 package com.hhli.springbootstduy.jdk;
 
-import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -28,37 +27,20 @@ public class LRU <K, V> extends LinkedHashMap<K,V> implements Map<K, V> {
     }
 
     public static void main(String[] args) {
-        //LRU<Character, Integer> lru = new LRU<>(16, 0.75F);
-        //
-        //String s = "abcdefghijkl";
-        //for (int i = 0; i < s.length(); i++) {
-        //    lru.put(s.charAt(i), i);
-        //}
-        //
-        //System.out.println("LRU中key为a的entry的值为：" + lru.get('a'));
-        //System.out.println("LRU中key为h的entry的值为：" + lru.get('h'));
-        //lru.put('Y', 10);
-        //lru.put('Z', 10);
-        //
-        //
-        //System.out.println("LRU的大小为" + lru.size());
-        //System.out.println("LRU：" + lru);
+        LRU<Character, Integer> lru = new LRU<>(16, 0.75F);
 
-        for (String s : Arrays.asList("1", "22", "333")) {
-            switch (s){
-                case "1":
-                    if(s.length()==1){
-                        System.out.println("hhh");
-                        continue;
-                    }
-                    System.out.println("zzzzz");
-                    break;
-                case "2":
-                    break;
-                default:
-                    break;
-            }
+        String s = "abcdefghijkl";
+        for (int i = 0; i < s.length(); i++) {
+            lru.put(s.charAt(i), i);
         }
 
+        System.out.println("LRU中key为a的entry的值为：" + lru.get('a'));
+        System.out.println("LRU中key为h的entry的值为：" + lru.get('h'));
+        lru.put('Y', 10);
+        lru.put('Z', 10);
+
+
+        System.out.println("LRU的大小为" + lru.size());
+        System.out.println("LRU：" + lru);
     }
 }

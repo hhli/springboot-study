@@ -1,5 +1,8 @@
 package com.hhli.springbootstduy.doc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author 李辉辉
  * @date 2019/5/13 22:40
@@ -16,4 +19,35 @@ public class Test2 {
      * 用户姓名
      */
     private String name;
+
+
+    public static List<List<Integer>> combinationSum(int[] candidates, int target) {
+        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        List<Integer> combine = new ArrayList<Integer>();
+        dfs(candidates, target, ans, combine, 0);
+        return ans;
+    }
+
+    public static void dfs(int[] candidates, int target, List<List<Integer>> ans, List<Integer> combine, int idx) {
+        if (idx == candidates.length) {
+            return;
+        }
+        if (target == 0) {
+            ans.add(new ArrayList<Integer>(combine));
+            return;
+        }
+        // 直接跳过
+        dfs(candidates, target, ans, combine, idx + 1);
+        // 选择当前数
+        if (target - candidates[idx] >= 0) {
+            combine.add(candidates[idx]);
+            dfs(candidates, target - candidates[idx], ans, combine, idx);
+            System.out.println(combine);
+            combine.remove(combine.size() - 1);
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println(combinationSum(new int[]{2, 3, 5}, 8));;
+    }
 }
