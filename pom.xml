@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.hhli</groupId>
@@ -30,7 +29,7 @@
 		<feign.starter.version>1.4.5.RELEASE</feign.starter.version>
 		<cglib.version>3.2.8</cglib.version>
 
-		<kafka.version>0.10.0.1</kafka.version>
+		<kafka.version>2.7.2</kafka.version>
 		<testng.version>6.14.3</testng.version>
 		<mock.version>1.8.4</mock.version>
 		<cache.version>1.1.1</cache.version>
