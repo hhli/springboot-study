@@ -26,7 +26,7 @@
 		<java.version>1.8</java.version>
 		<feign.version>10.0.1</feign.version>
 		<form.version>3.2.2</form.version>
-		<lombok.version>1.16.18</lombok.version>
+		<lombok.version>1.18.12</lombok.version>
 		<feign.starter.version>1.4.5.RELEASE</feign.starter.version>
 		<cglib.version>3.2.8</cglib.version>
 

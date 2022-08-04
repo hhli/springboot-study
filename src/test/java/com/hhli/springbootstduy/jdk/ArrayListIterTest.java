@@ -1,6 +1,5 @@
 package com.hhli.springbootstduy.jdk;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 
 import java.util.*;
 
@@ -12,7 +11,7 @@ import java.util.*;
 public class ArrayListIterTest {
 
     public static void main(String[] args) {
-        List<String> strList = new ArrayList<String>(){{
+        List<String> strList = new ArrayList<String>() {{
             add("1");
             add("2");
             add("3");
