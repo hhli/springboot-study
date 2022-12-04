@@ -1,5 +1,6 @@
 package com.hhli.springbootstduy.algothrims;
 
+
 import java.util.*;
 
 /**
@@ -10,7 +11,7 @@ import java.util.*;
 public class ArrayIntersection2 {
 
     public static void main(String[] args) {
-
+        System.out.println(generateParenthesis(4));
     }
 
 
@@ -48,5 +49,30 @@ public class ArrayIntersection2 {
         }
 
         return a;
+    }
+
+    public static List<String> generateParenthesis(int n) {
+        List<String>[] temp = (ArrayList<String>[])new ArrayList<?>[n];
+        temp[0]= new ArrayList<>();
+        temp[0].add("()");
+        for (int i = 1; i < n; i++) {
+            temp[i] = new ArrayList<>();
+            for (String s : temp[i-1]) {
+                temp[i].add(String.format("()%s", s));
+                int right = 0;
+                int left = 0;
+                for (int j = 0; j < s.length(); j++) {
+                    if(s.charAt(j) == '('){
+                        right++;
+                    }else {
+                        left++;
+                    }
+                    if(left == right){
+                        temp[i].add(String.format("(%s)%s", s.substring(0, j+1), s.substring(j+1)));
+                    }
+                }
+            }
+        }
+        return temp[n-1];
     }
 }

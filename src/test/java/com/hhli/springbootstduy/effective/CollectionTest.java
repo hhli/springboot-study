@@ -1,5 +1,7 @@
 package com.hhli.springbootstduy.effective;
 
+import java.util.ArrayList;
+
 /**
  * @author 李辉辉
  * @date 2019-10-08 11:07
@@ -8,7 +10,7 @@ package com.hhli.springbootstduy.effective;
 public class CollectionTest {
 
     public static void main(String[] args) {
-        //ArrayList strList = new ArrayList();
+        ArrayList strList = new ArrayList();
         //strList.add("11");
         //strList.add(new Date());
 

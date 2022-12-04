@@ -10,4 +10,8 @@ import java.io.Serializable;
 public class BasePojo implements Serializable{
 
     private static final long serialVersionUID = 6868521681670937379L;
+
+    public static void main(String[] args) {
+        System.out.println(Integer.MAX_VALUE);
+    }
 }

@@ -20,4 +20,13 @@ public class CDConfig {
         // CompactDisc类型的
         return new SgtPeppers();
     }
+
+    public static void main(String[] args) {
+        String  s = "aaa";
+        char[] temp = s.toCharArray();
+        for (int i = 0; i <temp .length; i++) {
+            temp[i] = 'b';
+        }
+        System.out.println(s + ":" + new String(temp));
+    }
 }

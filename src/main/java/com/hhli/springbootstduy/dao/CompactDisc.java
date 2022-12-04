@@ -6,5 +6,6 @@ package com.hhli.springbootstduy.dao;
  * @summary
  */
 public interface CompactDisc {
+    public static final int a = 1;
     void play();
 }
