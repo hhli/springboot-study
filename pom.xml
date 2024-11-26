@@ -31,7 +31,7 @@
 		<cglib.version>3.2.8</cglib.version>
 
 		<kafka.version>0.10.0.1</kafka.version>
-		<testng.version>6.14.3</testng.version>
+		<testng.version>7.5.1</testng.version>
 		<mock.version>1.8.4</mock.version>
 		<cache.version>1.1.1</cache.version>
 		<util.verison>1.0.4</util.verison>
